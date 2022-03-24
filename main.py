@@ -10,6 +10,7 @@ client = Client(os.environ["TWILIO_ACCOUNT_SID"], os.environ["TWILIO_AUTH_TOKEN"
 @app.route("/date/create", methods=["POST"])
 def createDate():
     data = request.json
+    # Send a message to both phone numbers.
     client.messages.create(messaging_service_sid=os.environ["TWILIO_MESSAGING_SERVICE_SID"], body="Don't miss your date in 10 minutes!", send_at=data["date"]+":00Z", schedule_type="fixed", to="+"+str(data["phone1"]))
     client.messages.create(messaging_service_sid=os.environ["TWILIO_MESSAGING_SERVICE_SID"], body="Don't miss your date in 10 minutes!", send_at=data["date"]+":00Z", schedule_type="fixed", to="+"+str(data["phone2"]))
     db['dates'].append(data)
