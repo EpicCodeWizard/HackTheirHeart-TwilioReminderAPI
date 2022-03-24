@@ -1,7 +1,13 @@
+# Imports.
+"""
+flask - API
+twilio - Send Messages
+replit - Database Management
+os - Store/Fetch Secrets
+"""
 from flask import Flask, request
 from twilio.rest import Client
 from replit import db
-import datetime
 import os
 
 app = Flask(__name__, template_folder="", static_folder="")
